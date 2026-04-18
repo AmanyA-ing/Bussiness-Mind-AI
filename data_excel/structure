@@ -1,0 +1,29 @@
+SmartRetail_Pro/
+│
+├── main.py                 # Le point d'entrée (Lancement de l'API FastAPI)
+├── database.py             # Connexion à SQLite
+├── models.py               # Définition de toutes les tables (User, Vente, Stock, etc.)
+│
+├── core/                   # La logique métier (calculs, sécurité)
+│   ├── auth.py             # Cryptage des mots de passe (passlib)
+│   └── business.py         # Fonctions de calcul (Saisons, Moments)
+│
+├── ia/                     # Le Laboratoire IA (Tes cerveaux séparés)
+│   ├── __init__.py         # Permet d'importer les fichiers comme des modules
+│   ├── regression.py       # Prédiction des revenus
+│   ├── staffing.py         # Prédiction du nombre de caissiers
+│   ├── recommendation.py   # Suggestions de produits & Promos
+│   └── sentiment.py        # Analyse des commentaires
+│
+├── ui/                     # L'Interface Utilisateur (Flet)
+│   ├── login_view.py       # Page de connexion
+│   ├── cashier_view.py     # Écran de vente (Caisse)
+│   └── admin_view.py       # Dashboard avec graphiques
+│
+├── data/                   # Pour stocker tes fichiers Excel et la base de données
+│   ├── imports/            # Tes fichiers Excel historiques
+│   └── smart_retail.db     # Ton fichier de base de données (se crée tout seul)
+│
+├── reports/                # Dossier où les PDF seront générés
+│
+└── requirements.txt        # Liste des bibliothèques à installer
