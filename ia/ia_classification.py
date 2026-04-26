@@ -5,15 +5,9 @@ from database import SessionLocal
 import models
 import joblib
 import os
+
 def classer_importance_stock(donnees_historiques):
-    try:
-        if not donnees_historiques or len(donnees_historiques) < 2:
-            return 0 
-        
-    except Exception as e:
-        print(f"Erreur IA : {e}")
-        return 0
-    
+    # ... ton code de calcul ...
     db = SessionLocal()
     ventes = db.query(models.Vente).all()
     
@@ -22,7 +16,6 @@ def classer_importance_stock(donnees_historiques):
         for v in ventes
     ])
     
-    # 1 si le produit rapporte beaucoup ET se vend vite, sinon 0
     seuil_benefice = df['benefice'].median()
     df['top_produit'] = ((df['benefice'] > seuil_benefice)).astype(int)
     
@@ -35,18 +28,10 @@ def classer_importance_stock(donnees_historiques):
     clf = RandomForestClassifier()
     clf.fit(X, y)
     
-    return "Modèle de classification prêt : Identification des produits VIP terminée."
-    
+    return clf, le # Retourne le modèle et l'encodeur
 
-def entrainer_et_sauver_stock(model, nom_fichier="stock_model.pkl"):
-    # On crée le dossier s'il n'existe pas
+def sauver_modele_vip(model, nom_fichier="vip_stock_model.pkl"):
     if not os.path.exists('data/modeles_sauvegardes'):
         os.makedirs('data/modeles_sauvegardes')
-    
-    # On sauvegarde le "cerveau" de l'IA dans un fichier
     joblib.dump(model, f'data/modeles_sauvegardes/{nom_fichier}')
-    print(f"Modèle sauvegardé dans {nom_fichier}")
-
-def charger_ia_stock(nom_fichier="stock_model.pkl"):
-    # On recharge le cerveau instantanément sans recalculer
-    return joblib.load(f'data/modeles_sauvegardes/{nom_fichier}')
+    print(f"Modèle VIP sauvegardé : {nom_fichier}")
