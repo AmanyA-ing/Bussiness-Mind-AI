@@ -1,5 +1,5 @@
 import flet as ft
-from ui.auth import vue_login
+from ui.login import vue_login
 from ui.caissier import vue_caissier
 from ui.admin import vue_admin
 
@@ -25,7 +25,7 @@ def main(page: ft.Page):
         page.update()
 
     page.on_route_change = route_change
-    page.go("/")
+    page.push_route("/")
 
 if __name__ == "__main__":
-    ft.app(target=main)
+    ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=9750)
