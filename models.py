@@ -12,8 +12,6 @@ class User(Base):
     password_hash = Column(String)
     role = Column(String) # 'admin' pour le Boss, 'caissier' pour l'employé
 
-
-
 # 2. VENTES (Le cœur du système)
 class Vente(Base):
     __tablename__ = "ventes"

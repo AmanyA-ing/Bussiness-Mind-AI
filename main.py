@@ -204,6 +204,7 @@ def mettre_a_jour_stock(nom: str, quantite_ajoutee: int, prix_achat: float, db: 
         db.commit()
         return {"status": "Stock mis à jour"}
     
+    
 @app.get("/api/admin/all-data")
 def get_all_data_for_ia(db: Session = Depends(get_db)):
     # On récupère les données de ton programme (Base de données)
