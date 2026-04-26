@@ -1,5 +1,5 @@
 import flet as ft
-
+from .config import API_URL, COULEUR_ADMIN 
 def vue_login(page: ft.Page):
     user_input = ft.TextField(label="Utilisateur", width=300, prefix_icon=ft.icons.PERSON)
     pass_input = ft.TextField(label="Mot de passe", password=True, can_reveal_password=True, width=300)

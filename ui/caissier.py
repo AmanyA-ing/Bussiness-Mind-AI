@@ -1,7 +1,6 @@
 import flet as ft
 import requests
-from ui.config import API_URL
-
+from .config import API_URL, COULEUR_ADMIN 
 def vue_caissier(page: ft.Page):
     panier = ft.Column(scroll=ft.ScrollMode.AUTO, expand=True)
     total_text = ft.Text("Total: 0 FCFA", size=30, weight="bold")
